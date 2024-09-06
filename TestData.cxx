@@ -20,16 +20,17 @@ void TestData::Streamer(TBuffer &R__b)
 {
    // Stream an object of class TestData.
 
-   UInt_t R__s, R__c;
    if (R__b.IsReading()) {
-      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
-      TObject::Streamer(R__b);
-      R__b >> sm;
-      R__b.CheckByteCount(R__s, R__c, TestData::IsA());
+      UInt_t R__s, R__c;
+      Version_t R__v = R__b.ReadVersion(&R__s, &R__c);
+      if (R__v < 2) {
+         TObject::Streamer(R__b);
+         R__b >> sm;
+         R__b.CheckByteCount(R__s, R__c, TestData::IsA());
+      } else {
+         R__b.ReadClassBuffer(TestData::Class(),this);
+      }
    } else {
-      R__c = R__b.WriteVersion(TestData::IsA(), kTRUE);
-      TObject::Streamer(R__b);
-      R__b << sm;
-      R__b.SetByteCount(R__c, kTRUE);
+      R__b.WriteClassBuffer(TestData::Class(),this);
    }
 }
