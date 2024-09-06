@@ -12,5 +12,5 @@ public:
   [[nodiscard]] const TLorentzVector& get() const;
 
 private:
-  ClassDef(a_member, 1)
+  ClassDefOverride(a_member, 1)
 };
