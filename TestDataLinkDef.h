@@ -6,7 +6,7 @@
 
 // the missing "+" in TestData is 
 // the key to the problem
-#pragma link C++ class TestData;
+#pragma link C++ class TestData-;
 #pragma link C++ class a_member+;
 
 #endif

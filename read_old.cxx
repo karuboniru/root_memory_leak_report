@@ -11,5 +11,6 @@ int main() {
     tree->GetEntry(i);
   }
   file.Close();
+  delete data;
   return 0;
 }

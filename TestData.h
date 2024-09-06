@@ -19,5 +19,5 @@ private:
   void Init();
   a_member *sm;
 
-  ClassDef(TestData, 1)
+  ClassDefOverride(TestData, 2)
 };
