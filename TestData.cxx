@@ -25,6 +25,8 @@ void TestData::Streamer(TBuffer &R__b)
       Version_t R__v = R__b.ReadVersion(&R__s, &R__c);
       if (R__v < 2) {
          TObject::Streamer(R__b);
+         delete sm;
+         sm = nullptr;
          R__b >> sm;
          R__b.CheckByteCount(R__s, R__c, TestData::IsA());
       } else {
